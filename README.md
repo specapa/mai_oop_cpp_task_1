@@ -1,3 +1,6 @@
+Кудрявцев Егор Алексеевич М8О-211БВ-24
+Вариант 5
+
 ![image](img/task.png)
 
 # C++ Project Build Guide
