@@ -1,3 +1,5 @@
+![image](img/task.png)
+
 # C++ Project Build Guide
 
 This project uses **CMake** as the build system.
