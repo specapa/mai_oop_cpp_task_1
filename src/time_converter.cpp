@@ -52,10 +52,16 @@ unsigned int parse(std::string s) {
                 switch (symb) {
                     case 'a':
                     case 'A':
+                        if (meridiem_opened) {
+                            throw std::invalid_argument("Error: wrong MERIDIEM format! Supported formats: am / pm");
+                        }
                         meridiem_opened = true;
                         break;
                     case 'p':
                     case 'P':
+                        if (meridiem_opened) {
+                            throw std::invalid_argument("Error: wrong MERIDIEM format! Supported formats: am / pm");
+                        }
                         meridiem_opened = true;
                         post_meridiem = true;
                         break;
@@ -63,6 +69,8 @@ unsigned int parse(std::string s) {
                     case 'M':
                         if (meridiem_opened) {
                             meridiem_finished = true;
+                        } else {
+                            throw std::invalid_argument("Error: wrong MERIDIEM format! Supported formats: am / pm");
                         }
                         break;
                     default:
