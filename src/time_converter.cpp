@@ -87,7 +87,9 @@ unsigned int parse(std::string s) {
     if (houres == 12) {
         post_meridiem = !post_meridiem;
     }
-    return ((houres + post_meridiem * 12) * 60 + minutes) % (60 * 24);
+    return ((houres + !post_meridiem * 12) * 60 + minutes) % (60 * 24);
+    // Wrong task format am -> pm
+    // 12:00 AM -> 12:00
 }
 
 std::string convert(unsigned int minutes)
@@ -96,5 +98,5 @@ std::string convert(unsigned int minutes)
     unsigned int mins = minutes % 60;
     std::string hourStr = (hours < 10) ? "0" + std::to_string(hours) : std::to_string(hours);
     std::string minStr = (mins < 10) ? "0" + std::to_string(mins) : std::to_string(mins);
-    return hourStr + ":" + minStr;
+    return hourStr + minStr;
 }
